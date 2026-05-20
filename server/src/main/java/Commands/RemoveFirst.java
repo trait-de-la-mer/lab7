@@ -3,6 +3,7 @@ package Commands;
 import tools.CollectionManager;
 
 public class RemoveFirst extends Command{
+    //TODO CHANGE FOR DB
     {setName("remove_first");
         setInfo("удаляет первый элемент в коллекции");}
     public RemoveFirst(CollectionManager cm) {

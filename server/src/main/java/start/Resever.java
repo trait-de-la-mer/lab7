@@ -14,7 +14,7 @@ public class Resever {
     public static void main(String[] args) throws IOException {
         int port = 6789;
         CollectionManager collectionManager = new CollectionManager();
-        BaseConnect baseConnect = new BaseConnect();
+        BaseConnect baseConnect = new BaseConnect("postgres", "77097");
         CSVParser csvParser = new CSVParser(collectionManager);
         collectionManager.setLabCollection(baseConnect.loadLabs());
         CommandManager commandManager = new CommandManager(

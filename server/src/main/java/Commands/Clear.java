@@ -3,6 +3,7 @@ package Commands;
 import tools.CollectionManager;
 
 public class Clear extends Command{
+    //TODO CHANGE FOR DB
     {setName("clear");
         setInfo("Очищает коллекцию");}
 

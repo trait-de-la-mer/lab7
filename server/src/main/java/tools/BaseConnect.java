@@ -6,28 +6,27 @@ import Collection.Difficulty;
 import Collection.LabWork;
 import Collection.Person;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.ResultSet;
-import java.sql.Statement;
+import java.sql.*;
 import java.time.LocalDate;
 import java.util.LinkedList;
 
 public class BaseConnect {
-
-    public LinkedList<LabWork> loadLabs() {
-
-        LinkedList<LabWork> labs = new LinkedList<>();
-
+    Statement statement;
+    //TODO ДОБАВИТЬ, ИЗМЕНИТЬ ПО ИД, УДАЛИТЬ ВСЕ, ЗАКРЫТЬ СОЕДИНЕНИЕ
+    public BaseConnect(String user, String password){
         String url = "jdbc:postgresql://localhost:5432/mydb";
-        String user = "postgres";
-        String password = "77097";
-
         try {
             Connection connection = DriverManager.getConnection(url, user, password);
+            statement = connection.createStatement();
+            System.out.println("успешно подключено к бд");
+        } catch (SQLException e) {
+            System.out.println("что-то не так с подключение к бд, проверь пользователя, пароль, доступность и т.д.");
+            System.out.println(e.getMessage());
+        }
+    }
 
-            Statement statement = connection.createStatement();
-
+    public LinkedList<LabWork> loadLabs() {
+        LinkedList<LabWork> labs = new LinkedList<>();
             String sql = """
                     SELECT
                         lw.id,
@@ -48,50 +47,54 @@ public class BaseConnect {
                     JOIN person p ON lw.author_id = p.id
                     ORDER BY lw.id
                     """;
+            try {
+                ResultSet rs = statement.executeQuery(sql);
 
-            ResultSet rs = statement.executeQuery(sql);
+                while (rs.next()) {
 
-            while (rs.next()) {
+                    LabWork lab = new LabWork();
 
-                LabWork lab = new LabWork();
+                    lab.setId(rs.getLong("id"));
 
-                lab.setId(rs.getLong("id"));
+                    lab.setName(rs.getString("name"));
 
-                lab.setName(rs.getString("name"));
+                    Coordinates coordinates = new Coordinates();
+                    coordinates.setX(rs.getLong("x"));
+                    coordinates.setY(rs.getInt("y"));
 
-                Coordinates coordinates = new Coordinates();
-                coordinates.setX(rs.getLong("x"));
-                coordinates.setY(rs.getInt("y"));
+                    lab.setCoordinates(coordinates);
 
-                lab.setCoordinates(coordinates);
+                    Person person = new Person();
+                    person.setName(rs.getString("person_name"));
+                    person.setWeight(rs.getDouble("weight"));
+                    person.setEyeColor(
+                            Color.fromString(rs.getString("eye_color"))
+                    );
 
-                Person person = new Person();
-                person.setName(rs.getString("person_name"));
-                person.setWeight(rs.getDouble("weight"));
-                person.setEyeColor(
-                        Color.fromString(rs.getString("eye_color"))
-                );
+                    lab.setAuthor(person);
 
-                lab.setAuthor(person);
+                    LocalDate creationDate =
+                            rs.getDate("creation_date").toLocalDate();
 
-                LocalDate creationDate =
-                        rs.getDate("creation_date").toLocalDate();
+                    lab.setCreationDate(creationDate);
 
-                lab.setCreationDate(creationDate);
+                    lab.setMinimalPoint(rs.getDouble("minimal_point"));
 
-                lab.setMinimalPoint(rs.getDouble("minimal_point"));
+                    lab.setDifficulty(
+                            Difficulty.fromString(rs.getString("difficulty"))
+                    );
 
-                lab.setDifficulty(
-                        Difficulty.fromString(rs.getString("difficulty"))
-                );
-
-                labs.add(lab);
+                    labs.add(lab);
+                }
+            } catch (SQLException e) {
+                System.out.println("что-то не так с бд");
+                System.out.println(e.getMessage());
             }
 
-        } catch (Exception e) {
-            System.out.println("что-то с подключение к БД");
-        }
-
         return labs;
+    }
+
+    public void addToDB(LabWork labWork) {
+
     }
 }

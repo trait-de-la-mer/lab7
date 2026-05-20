@@ -8,6 +8,7 @@ import java.util.Iterator;
 import java.util.Optional;
 
 public class Remove extends Command<Integer> {
+    //TODO CHANGE FOR DB
     {setName("remove");
         setInfo("удаляет элемент по id");}
     public Remove(CollectionManager cm) {

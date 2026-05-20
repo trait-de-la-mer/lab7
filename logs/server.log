@@ -74,3 +74,5 @@
 2026-05-21 02:24:16.603 [main] INFO  Connecting.ConnectionAcceptor - Ожидание клиента...
 2026-05-21 02:24:25.249 [main] INFO  Connecting.ConnectionAcceptor - Подключен: /127.0.0.1
 2026-05-21 02:24:30.119 [main] INFO  Connecting.RequestReader - Получено: Requester{command='show', args=null, objectClass=null}
+2026-05-21 02:26:34.252 [Server-Console-Thread] INFO  tools.Consol - Сохранено
+2026-05-21 02:26:34.254 [Server-Console-Thread] WARN  tools.CSVParser - Произошла ошибка при записи в файл 

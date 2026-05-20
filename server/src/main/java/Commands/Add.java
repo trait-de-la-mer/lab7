@@ -4,6 +4,7 @@ import Collection.LabWork;
 import tools.CollectionManager;
 
 public class Add extends Command<LabWork>{
+    //TODO CHANGE FOR DB
     {setName("add");
         setInfo("удаляет элемент по id");}
     public Add(CollectionManager cm) {

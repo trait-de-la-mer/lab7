@@ -8,6 +8,7 @@ import java.util.Objects;
 import java.util.Optional;
 
 public class Update extends Command<UpdateArgs>{
+    //TODO CHANGE FOR DB
     {
         setName("update");
         setInfo("обновляет лабу по айди");
