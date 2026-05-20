@@ -1,6 +1,7 @@
 package start;
 
 import Commands.*;
+import tools.BaseConnect;
 import tools.CSVParser;
 import tools.CollectionManager;
 import tools.CommandManager;
@@ -13,8 +14,9 @@ public class Resever {
     public static void main(String[] args) throws IOException {
         int port = 6789;
         CollectionManager collectionManager = new CollectionManager();
+        BaseConnect baseConnect = new BaseConnect();
         CSVParser csvParser = new CSVParser(collectionManager);
-        collectionManager.setLabCollection(csvParser.parse("/home/k0idzi/IdeaProjects/lab6/server/src/main/resources/labs.csv"));
+        collectionManager.setLabCollection(baseConnect.loadLabs());
         CommandManager commandManager = new CommandManager(
                 new Add(collectionManager),
                 new Remove(collectionManager),
