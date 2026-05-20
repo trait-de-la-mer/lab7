@@ -1,0 +1,56 @@
+2026-05-05 03:41:18.972 [main] INFO  Connecting.ConnectionAcceptor - Сервер запущен на порту 6789
+2026-05-05 03:41:18.974 [main] INFO  Connecting.ConnectionAcceptor - Ожидание клиента...
+2026-05-05 03:41:20.723 [main] INFO  Connecting.ConnectionAcceptor - Подключен: /127.0.0.1
+2026-05-05 03:41:32.874 [main] INFO  Connecting.RequestReader - Получено: Requester{command='add', args=LabWork{id=1, name='2', coordinates=2;2, creationDate=2026-05-05, minimalPoint=2.0, difficulty=EASY, author: name = 2;weight = 2.0;BLACK}, objectClass=class Collection.LabWork}
+2026-05-05 03:41:55.976 [main] INFO  Connecting.RequestReader - Получено: Requester{command='show', args=null, objectClass=null}
+2026-05-05 03:42:05.998 [main] ERROR Connecting.ConnectManager - Клиент отключился или ошибка null
+2026-05-05 03:42:05.999 [main] INFO  Connecting.ConnectionAcceptor - Ожидание клиента...
+2026-05-05 14:35:21.329 [Server-Console-Thread] INFO  tools.Consol - Серверная консоль активна. Доступные команды: save, exit
+2026-05-05 14:35:21.329 [main] INFO  Connecting.ConnectionAcceptor - Сервер запущен на порту 6789
+2026-05-05 14:35:21.331 [main] INFO  Connecting.ConnectionAcceptor - Ожидание клиента...
+2026-05-05 14:35:31.649 [main] INFO  Connecting.ConnectionAcceptor - Подключен: /127.0.0.1
+2026-05-05 14:38:17.518 [main] INFO  Connecting.RequestReader - Получено: Requester{command='show', args=null, objectClass=null}
+2026-05-05 14:38:20.684 [main] ERROR Connecting.ConnectManager - Клиент отключился или ошибка null
+2026-05-05 14:38:20.685 [main] INFO  Connecting.ConnectionAcceptor - Ожидание клиента...
+2026-05-05 14:44:44.386 [main] INFO  Connecting.ConnectionAcceptor - Подключен: /127.0.0.1
+2026-05-05 14:45:02.015 [main] INFO  Connecting.RequestReader - Получено: Requester{command='add', args=LabWork{id=1, name='2', coordinates=2;2, creationDate=2026-05-05, minimalPoint=2.0, difficulty=EASY, author: name = 2;weight = 2.0;RED}, objectClass=class Collection.LabWork}
+2026-05-05 14:45:05.923 [main] INFO  Connecting.RequestReader - Получено: Requester{command='show', args=null, objectClass=null}
+2026-05-05 14:47:21.542 [main] INFO  Connecting.RequestReader - Получено: Requester{command='add', args=LabWork{id=1, name='6', coordinates=8;2, creationDate=2026-05-05, minimalPoint=5.0, difficulty=NORMAL, author: name = 32;weight = 7.0;YELLOW}, objectClass=class Collection.LabWork}
+2026-05-05 14:47:23.515 [main] INFO  Connecting.RequestReader - Получено: Requester{command='show', args=null, objectClass=null}
+2026-05-05 14:47:27.481 [main] INFO  Connecting.RequestReader - Получено: Requester{command='remove', args=2, objectClass=class java.lang.Integer}
+2026-05-05 14:47:29.720 [main] INFO  Connecting.RequestReader - Получено: Requester{command='show', args=null, objectClass=null}
+2026-05-05 14:47:34.325 [main] INFO  Connecting.RequestReader - Получено: Requester{command='add', args=LabWork{id=1, name='2', coordinates=2;2, creationDate=2026-05-05, minimalPoint=100.0, difficulty=EASY, author: name = 2;weight = 2.0;RED}, objectClass=class Collection.LabWork}
+2026-05-05 14:47:34.327 [main] INFO  Connecting.RequestReader - Получено: Requester{command='show', args=null, objectClass=null}
+2026-05-05 14:47:34.370 [main] INFO  Connecting.RequestReader - Получено: Requester{command='add', args=LabWork{id=1, name='3', coordinates=3;3, creationDate=2026-05-05, minimalPoint=20.0, difficulty=EASY, author: name = 3;weight = 3.0;BLACK}, objectClass=class Collection.LabWork}
+2026-05-05 14:47:56.494 [main] INFO  Connecting.RequestReader - Получено: Requester{command='show', args=null, objectClass=null}
+2026-05-05 14:48:01.372 [main] INFO  Connecting.RequestReader - Получено: Requester{command='remove', args=4, objectClass=class java.lang.Integer}
+2026-05-05 14:48:03.392 [main] INFO  Connecting.RequestReader - Получено: Requester{command='clear', args=null, objectClass=null}
+2026-05-05 14:48:10.304 [main] INFO  Connecting.RequestReader - Получено: Requester{command='add', args=LabWork{id=1, name='2', coordinates=2;2, creationDate=2026-05-05, minimalPoint=100.0, difficulty=EASY, author: name = 2;weight = 2.0;RED}, objectClass=class Collection.LabWork}
+2026-05-05 14:48:10.305 [main] INFO  Connecting.RequestReader - Получено: Requester{command='show', args=null, objectClass=null}
+2026-05-05 14:48:10.347 [main] INFO  Connecting.RequestReader - Получено: Requester{command='add', args=LabWork{id=1, name='3', coordinates=3;3, creationDate=2026-05-05, minimalPoint=20.0, difficulty=EASY, author: name = 3;weight = 3.0;BLACK}, objectClass=class Collection.LabWork}
+2026-05-05 14:50:12.287 [main] INFO  Connecting.ConnectionAcceptor - Сервер запущен на порту 6789
+2026-05-05 14:50:12.287 [Server-Console-Thread] INFO  tools.Consol - Серверная консоль активна. Доступные команды: save, exit
+2026-05-05 14:50:12.292 [main] INFO  Connecting.ConnectionAcceptor - Ожидание клиента...
+2026-05-05 14:50:13.894 [main] INFO  Connecting.ConnectionAcceptor - Подключен: /127.0.0.1
+2026-05-05 14:50:20.272 [main] INFO  Connecting.RequestReader - Получено: Requester{command='show', args=null, objectClass=null}
+2026-05-05 14:50:23.683 [main] ERROR Connecting.ConnectManager - Клиент отключился или ошибка null
+2026-05-05 14:50:23.685 [main] INFO  Connecting.ConnectionAcceptor - Ожидание клиента...
+2026-05-05 14:50:28.006 [main] INFO  Connecting.ConnectionAcceptor - Подключен: /127.0.0.1
+2026-05-05 14:50:31.841 [main] INFO  Connecting.RequestReader - Получено: Requester{command='show', args=null, objectClass=null}
+2026-05-05 14:50:35.372 [main] INFO  Connecting.RequestReader - Получено: Requester{command='add', args=LabWork{id=1, name='2', coordinates=2;2, creationDate=2026-05-05, minimalPoint=100.0, difficulty=EASY, author: name = 2;weight = 2.0;RED}, objectClass=class Collection.LabWork}
+2026-05-05 14:50:35.374 [main] INFO  Connecting.RequestReader - Получено: Requester{command='show', args=null, objectClass=null}
+2026-05-05 14:50:35.419 [main] INFO  Connecting.RequestReader - Получено: Requester{command='add', args=LabWork{id=1, name='3', coordinates=3;3, creationDate=2026-05-05, minimalPoint=20.0, difficulty=EASY, author: name = 3;weight = 3.0;BLACK}, objectClass=class Collection.LabWork}
+2026-05-05 14:50:37.813 [main] INFO  Connecting.RequestReader - Получено: Requester{command='show', args=null, objectClass=null}
+2026-05-05 14:50:46.934 [main] INFO  Connecting.RequestReader - Получено: Requester{command='show', args=null, objectClass=null}
+2026-05-05 14:50:55.103 [main] ERROR Connecting.ConnectManager - Клиент отключился или ошибка null
+2026-05-05 14:50:55.104 [main] INFO  Connecting.ConnectionAcceptor - Ожидание клиента...
+2026-05-05 14:51:00.565 [main] INFO  Connecting.ConnectionAcceptor - Сервер запущен на порту 6789
+2026-05-05 14:51:00.566 [Server-Console-Thread] INFO  tools.Consol - Серверная консоль активна. Доступные команды: save, exit
+2026-05-05 14:51:00.569 [main] INFO  Connecting.ConnectionAcceptor - Ожидание клиента...
+2026-05-05 14:51:02.137 [main] INFO  Connecting.ConnectionAcceptor - Подключен: /127.0.0.1
+2026-05-05 14:51:03.909 [main] INFO  Connecting.RequestReader - Получено: Requester{command='show', args=null, objectClass=null}
+2026-05-05 14:51:10.858 [main] ERROR Connecting.ConnectManager - Клиент отключился или ошибка null
+2026-05-05 14:51:10.859 [main] INFO  Connecting.ConnectionAcceptor - Ожидание клиента...
+2026-05-05 15:03:00.757 [main] INFO  Connecting.ConnectionAcceptor - Сервер запущен на порту 6789
+2026-05-05 15:03:00.763 [main] INFO  Connecting.ConnectionAcceptor - Ожидание клиента...
+2026-05-05 15:03:00.766 [Server-Console-Thread] INFO  tools.Consol - Серверная консоль активна. Доступные команды: save, exit

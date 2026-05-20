@@ -1,0 +1,10 @@
+add
+easy
+3
+20
+3
+3
+3
+3
+black
+script ewq.txt
