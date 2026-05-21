@@ -12,7 +12,7 @@ public class RemoveFirst extends Command{
 
     @Override
     public String execute(Object arg) {
-        getCollectionManager().removeElement(0);
+        getCollectionManager().remove(0);
         return "Удален первый элемент коллекции";
     }
 }

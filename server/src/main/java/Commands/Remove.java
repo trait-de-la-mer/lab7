@@ -15,16 +15,13 @@ public class Remove extends Command<Integer> {
         super(cm);
     }
 
+    @Override
     public String execute(Integer args) {
-        int key;
-        key = args;
+        int key = args;
         CollectionManager cm = getCollectionManager();
-        Optional<LabWork> target = cm.getLabCollection().stream()
-                .filter(lab -> lab.getId() == key)
-                .findFirst();
+        LabWork removed = cm.remove(key);
 
-        if (target.isPresent()) {
-            cm.getLabCollection().remove(target.get());
+        if (removed != null) {
             return "Элемент с id " + key + " удален";
         } else {
             throw new IllegalArgumentException("Элемент с таким id не найден");

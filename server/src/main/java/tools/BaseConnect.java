@@ -13,7 +13,7 @@ import java.util.LinkedList;
 public class BaseConnect {
     Statement statement;
     Connection connection;
-    //TODO ДОБАВИТЬ, ИЗМЕНИТЬ ПО ИД, УДАЛИТЬ ВСЕ, ЗАКРЫТЬ СОЕДИНЕНИЕ
+    //TODO ИЗМЕНИТЬ ПО ИД, УДАЛИТЬ ВСЕ, ЗАКРЫТЬ СОЕДИНЕНИЕ
     public BaseConnect(String user, String password){
         String url = "jdbc:postgresql://localhost:5432/mydb";
         try {
@@ -90,10 +90,8 @@ public class BaseConnect {
             coordinatesStatement.executeUpdate();
             ResultSet coordinatesKeys = coordinatesStatement.getGeneratedKeys();
             coordinatesKeys.next();
-
             int coordinatesId = coordinatesKeys.getInt(1);
 
-            //person
             String personSql = "INSERT INTO person(name, weight, eye_color) VALUES (?, ?, ?)";
             PreparedStatement personStatement = connection.prepareStatement(personSql,
                             PreparedStatement.RETURN_GENERATED_KEYS);
@@ -104,9 +102,7 @@ public class BaseConnect {
             var personKeys = personStatement.getGeneratedKeys();
             personKeys.next();
             int personId = personKeys.getInt(1);
-            /*
-             * 3. Добавляем lab_work
-             */
+
             String labSql = """
                     INSERT INTO lab_work(name, coordinates_id, creation_date, minimal_point, difficulty, author_id)
                     VALUES (?, ?, ?, ?, ?, ?)
@@ -120,5 +116,37 @@ public class BaseConnect {
             labStatement.setInt(6, personId);
             labStatement.executeUpdate();
             System.out.println("labwork add");
+    }
+
+    public void remove (long id) throws SQLException {
+        String selectSql = """
+        SELECT coordinates_id, author_id
+        FROM lab_work
+        WHERE id = ?
+        """;
+        PreparedStatement selectStatement = connection.prepareStatement(selectSql);
+        selectStatement.setLong(1, id);
+        ResultSet rs = selectStatement.executeQuery();
+        if (!rs.next()) {
+            throw new IllegalArgumentException("LabWork с таким id не найден");
+        }
+        int coordinatesId = rs.getInt("coordinates_id");
+        int authorId = rs.getInt("author_id");
+
+        String deleteLabSql = "DELETE FROM lab_work WHERE id = ?";
+        PreparedStatement deleteLabStatement = connection.prepareStatement(deleteLabSql);
+        deleteLabStatement.setLong(1, id);
+        deleteLabStatement.executeUpdate();
+
+        String deleteCoordinatesSql = "DELETE FROM coordinates WHERE id = ?";
+        PreparedStatement deleteCoordinatesStatement = connection.prepareStatement(deleteCoordinatesSql);
+        deleteCoordinatesStatement.setInt(1, coordinatesId);
+        deleteCoordinatesStatement.executeUpdate();
+
+        String deletePersonSql = "DELETE FROM person WHERE id = ?";
+        PreparedStatement deletePersonStatement = connection.prepareStatement(deletePersonSql);
+        deletePersonStatement.setInt(1, authorId);
+        deletePersonStatement.executeUpdate();
+        System.out.println("labwork из бд удалён");
     }
 }

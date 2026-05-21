@@ -33,8 +33,17 @@ public class CollectionManager {
         this.labCollection = labCollection;
     }
 
-    public void removeElement(int index){
-        labCollection.remove(index);
+    public LabWork remove  (int index){
+        try {
+            baseConnect.remove(index);
+            LabWork labWork = labCollection.remove(index);
+            return labWork;
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+            throw new IllegalArgumentException("не удалось удалить лабу из БД и из коллекцию");
+        } catch (Exception e) {
+            throw new IllegalArgumentException(e.getMessage());
+        }
     }
 
     public void addElement(LabWork lab){
