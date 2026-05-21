@@ -252,3 +252,96 @@
 2026-05-21 06:14:39.464 [main] INFO  Connecting.RequestReader - Получено: Requester{command='remove', args=14, objectClass=class java.lang.Integer}
 2026-05-21 06:14:43.246 [main] INFO  Connecting.RequestReader - Получено: Requester{command='remove', args=15, objectClass=class java.lang.Integer}
 2026-05-21 06:14:44.399 [main] INFO  Connecting.RequestReader - Получено: Requester{command='show', args=null, objectClass=null}
+2026-05-21 07:09:05.435 [main] INFO  Connecting.ConnectionAcceptor - Сервер запущен на порту 6789
+2026-05-21 07:09:05.435 [Server-Console-Thread] INFO  tools.Consol - Серверная консоль активна. Доступные команды: save, exit
+2026-05-21 07:09:05.436 [main] INFO  Connecting.ConnectionAcceptor - Ожидание клиента...
+2026-05-21 07:09:06.423 [main] INFO  Connecting.ConnectionAcceptor - Подключен: /127.0.0.1
+2026-05-21 07:09:16.280 [main] INFO  Connecting.RequestReader - Получено: Requester{command='help', args=null, objectClass=null}
+2026-05-21 07:11:44.569 [main] INFO  Connecting.ConnectionAcceptor - Сервер запущен на порту 6789
+2026-05-21 07:11:44.569 [Server-Console-Thread] INFO  tools.Consol - Серверная консоль активна. Доступные команды: save, exit
+2026-05-21 07:11:44.570 [main] INFO  Connecting.ConnectionAcceptor - Ожидание клиента...
+2026-05-21 07:11:46.321 [main] INFO  Connecting.ConnectionAcceptor - Подключен: /127.0.0.1
+2026-05-21 07:11:53.330 [main] INFO  Connecting.RequestReader - Получено: Requester{command='help', args=null, objectClass=null}
+2026-05-21 07:12:22.498 [main] INFO  Connecting.ConnectionAcceptor - Сервер запущен на порту 6789
+2026-05-21 07:12:22.498 [Server-Console-Thread] INFO  tools.Consol - Серверная консоль активна. Доступные команды: save, exit
+2026-05-21 07:12:22.500 [main] INFO  Connecting.ConnectionAcceptor - Ожидание клиента...
+2026-05-21 07:12:24.692 [main] INFO  Connecting.ConnectionAcceptor - Подключен: /127.0.0.1
+2026-05-21 07:12:59.035 [Server-Console-Thread] INFO  tools.Consol - Серверная консоль активна. Доступные команды: save, exit
+2026-05-21 07:12:59.035 [main] INFO  Connecting.ConnectionAcceptor - Сервер запущен на порту 6789
+2026-05-21 07:12:59.036 [main] INFO  Connecting.ConnectionAcceptor - Ожидание клиента...
+2026-05-21 07:12:59.843 [main] INFO  Connecting.ConnectionAcceptor - Подключен: /127.0.0.1
+2026-05-21 07:13:07.243 [main] INFO  Connecting.RequestReader - Получено: Requester{command='help', args=null, objectClass=null, user=User{login='1', password='1'}}
+2026-05-21 07:46:51.584 [main] INFO  Connecting.ConnectionAcceptor - Сервер запущен на порту 6789
+2026-05-21 07:46:51.584 [Server-Console-Thread] INFO  tools.Consol - Серверная консоль активна. Доступные команды: save, exit
+2026-05-21 07:46:51.586 [main] INFO  Connecting.ConnectionAcceptor - Ожидание клиента...
+2026-05-21 07:46:53.935 [main] INFO  Connecting.ConnectionAcceptor - Подключен: /127.0.0.1
+2026-05-21 07:54:17.288 [Server-Console-Thread] INFO  tools.Consol - Серверная консоль активна. Доступные команды: save, exit
+2026-05-21 07:54:17.288 [main] INFO  Connecting.ConnectionAcceptor - Сервер запущен на порту 6789
+2026-05-21 07:54:17.290 [main] INFO  Connecting.ConnectionAcceptor - Ожидание клиента...
+2026-05-21 07:54:18.818 [main] INFO  Connecting.ConnectionAcceptor - Подключен: /127.0.0.1
+2026-05-21 07:56:34.177 [main] INFO  Connecting.ConnectionAcceptor - Сервер запущен на порту 6789
+2026-05-21 07:56:34.177 [Server-Console-Thread] INFO  tools.Consol - Серверная консоль активна. Доступные команды: save, exit
+2026-05-21 07:56:34.179 [main] INFO  Connecting.ConnectionAcceptor - Ожидание клиента...
+2026-05-21 07:56:35.608 [main] INFO  Connecting.ConnectionAcceptor - Подключен: /127.0.0.1
+2026-05-21 07:56:41.437 [main] INFO  Connecting.RequestReader - Получено: Requester{command='register', args=null, objectClass=null, user=User{login='1', password='1'}}
+2026-05-21 07:56:41.446 [main] ERROR Connecting.ConnectManager - org.postgresql.util.PSQLException: ERROR: relation "users" does not exist
+  Позиция: 19
+2026-05-21 07:56:41.446 [main] WARN  Connecting.ConnectManager - Возможно порт занят
+2026-05-21 07:56:41.447 [main] WARN  tools.CSVParser - Произошла ошибка при записи в файл 
+2026-05-21 07:56:41.448 [main] INFO  Connecting.ConnectionAcceptor - Сокет закрыт
+2026-05-21 07:57:45.771 [main] INFO  Connecting.ConnectionAcceptor - Сервер запущен на порту 6789
+2026-05-21 07:57:45.771 [Server-Console-Thread] INFO  tools.Consol - Серверная консоль активна. Доступные команды: save, exit
+2026-05-21 07:57:45.773 [main] INFO  Connecting.ConnectionAcceptor - Ожидание клиента...
+2026-05-21 07:57:47.323 [main] INFO  Connecting.ConnectionAcceptor - Подключен: /127.0.0.1
+2026-05-21 07:57:54.287 [main] INFO  Connecting.RequestReader - Получено: Requester{command='register', args=null, objectClass=null, user=User{login='1', password='1'}}
+2026-05-21 07:57:54.295 [main] ERROR Connecting.ConnectManager - org.postgresql.util.PSQLException: ERROR: relation "users" does not exist
+  Позиция: 19
+2026-05-21 07:57:54.296 [main] WARN  Connecting.ConnectManager - Возможно порт занят
+2026-05-21 07:57:54.297 [main] WARN  tools.CSVParser - Произошла ошибка при записи в файл 
+2026-05-21 07:57:54.297 [main] INFO  Connecting.ConnectionAcceptor - Сокет закрыт
+2026-05-21 07:59:50.272 [main] INFO  Connecting.ConnectionAcceptor - Сервер запущен на порту 6789
+2026-05-21 07:59:50.272 [Server-Console-Thread] INFO  tools.Consol - Серверная консоль активна. Доступные команды: save, exit
+2026-05-21 07:59:50.274 [main] INFO  Connecting.ConnectionAcceptor - Ожидание клиента...
+2026-05-21 07:59:51.357 [main] INFO  Connecting.ConnectionAcceptor - Подключен: /127.0.0.1
+2026-05-21 08:00:01.262 [main] INFO  Connecting.RequestReader - Получено: Requester{command='help', args=null, objectClass=null, user=User{login='1', password='1'}}
+2026-05-21 08:00:12.026 [main] INFO  Connecting.RequestReader - Получено: Requester{command='help', args=null, objectClass=null, user=User{login='1', password='1'}}
+2026-05-21 08:00:29.137 [main] INFO  Connecting.RequestReader - Получено: Requester{command='register', args=null, objectClass=null, user=User{login='1', password='1'}}
+2026-05-21 08:00:29.141 [main] ERROR Connecting.ConnectManager - команды нет в мапе
+2026-05-21 08:00:50.898 [main] ERROR Connecting.ConnectManager - Клиент отключился или ошибка null
+2026-05-21 08:00:50.898 [main] INFO  Connecting.ConnectionAcceptor - Ожидание клиента...
+2026-05-21 08:03:21.645 [main] INFO  Connecting.ConnectionAcceptor - Сервер запущен на порту 6789
+2026-05-21 08:03:21.645 [Server-Console-Thread] INFO  tools.Consol - Серверная консоль активна. Доступные команды: save, exit
+2026-05-21 08:03:21.646 [main] INFO  Connecting.ConnectionAcceptor - Ожидание клиента...
+2026-05-21 08:03:21.863 [main] INFO  Connecting.ConnectionAcceptor - Подключен: /127.0.0.1
+2026-05-21 08:04:14.763 [main] INFO  Connecting.RequestReader - Получено: Requester{command='help', args=null, objectClass=null, user=User{login='1', password='1'}}
+2026-05-21 08:04:22.413 [main] INFO  Connecting.RequestReader - Получено: Requester{command='register', args=null, objectClass=null, user=User{login='1', password='1'}}
+2026-05-21 08:06:40.308 [main] INFO  Connecting.ConnectionAcceptor - Сервер запущен на порту 6789
+2026-05-21 08:06:40.308 [Server-Console-Thread] INFO  tools.Consol - Серверная консоль активна. Доступные команды: save, exit
+2026-05-21 08:06:40.310 [main] INFO  Connecting.ConnectionAcceptor - Ожидание клиента...
+2026-05-21 08:06:41.623 [main] INFO  Connecting.ConnectionAcceptor - Подключен: /127.0.0.1
+2026-05-21 08:06:47.465 [main] INFO  Connecting.RequestReader - Получено: Requester{command='help', args=null, objectClass=null, user=User{login='2', password='2'}}
+2026-05-21 08:06:59.569 [main] INFO  Connecting.RequestReader - Получено: Requester{command='register', args=null, objectClass=null, user=User{login='2', password='2'}}
+2026-05-21 08:25:18.189 [main] ERROR Connecting.ConnectManager - Клиент отключился или ошибка null
+2026-05-21 08:25:18.190 [main] INFO  Connecting.ConnectionAcceptor - Ожидание клиента...
+2026-05-21 08:25:25.602 [main] INFO  Connecting.ConnectionAcceptor - Подключен: /127.0.0.1
+2026-05-21 08:25:31.874 [main] INFO  Connecting.RequestReader - Получено: Requester{command='help', args=null, objectClass=null, user=User{login='1', password='1'}}
+2026-05-21 08:25:35.811 [main] INFO  Connecting.RequestReader - Получено: Requester{command='show', args=null, objectClass=null, user=User{login='2', password='2'}}
+2026-05-21 08:25:57.400 [main] INFO  Connecting.RequestReader - Получено: Requester{command='add', args=LabWork{id=1, name='1', coordinates=1;1, creationDate=2026-05-21, minimalPoint=1.0, difficulty=EASY, author: name = 1;weight = 1.0;RED}, objectClass=class Collection.LabWork, user=User{login='1', password='1'}}
+2026-05-21 08:26:00.487 [main] INFO  Connecting.RequestReader - Получено: Requester{command='show', args=null, objectClass=null, user=User{login='1', password='1'}}
+2026-05-21 08:26:13.968 [main] INFO  Connecting.RequestReader - Получено: Requester{command='register', args=null, objectClass=null, user=User{login='3', password='3'}}
+2026-05-21 08:29:37.502 [main] ERROR Connecting.ConnectManager - Клиент отключился или ошибка null
+2026-05-21 08:29:37.503 [main] INFO  Connecting.ConnectionAcceptor - Ожидание клиента...
+2026-05-21 08:29:38.030 [main] INFO  Connecting.ConnectionAcceptor - Подключен: /127.0.0.1
+2026-05-21 08:29:41.562 [main] INFO  Connecting.ConnectionAcceptor - Сервер запущен на порту 6789
+2026-05-21 08:29:41.562 [Server-Console-Thread] INFO  tools.Consol - Серверная консоль активна. Доступные команды: save, exit
+2026-05-21 08:29:41.564 [main] INFO  Connecting.ConnectionAcceptor - Ожидание клиента...
+2026-05-21 08:29:58.917 [main] INFO  Connecting.ConnectionAcceptor - Подключен: /127.0.0.1
+2026-05-21 08:30:08.372 [main] INFO  Connecting.RequestReader - Получено: Requester{command='help', args=null, objectClass=null, user=User{login='', password=''}}
+2026-05-21 08:30:19.861 [main] INFO  Connecting.RequestReader - Получено: Requester{command='help', args=null, objectClass=null, user=User{login='1', password='1'}}
+2026-05-21 08:30:24.739 [main] INFO  Connecting.RequestReader - Получено: Requester{command='help', args=null, objectClass=null, user=User{login='2', password='2'}}
+2026-05-21 08:30:29.583 [main] INFO  Connecting.RequestReader - Получено: Requester{command='help', args=null, objectClass=null, user=User{login='3', password='3'}}
+2026-05-21 08:30:33.846 [main] INFO  Connecting.RequestReader - Получено: Requester{command='help', args=null, objectClass=null, user=User{login='4', password='4'}}
+2026-05-21 08:30:40.343 [main] INFO  Connecting.RequestReader - Получено: Requester{command='register', args=null, objectClass=null, user=User{login='4', password='4'}}
+2026-05-21 08:30:45.284 [main] INFO  Connecting.RequestReader - Получено: Requester{command='help', args=null, objectClass=null, user=User{login='4', password='4'}}
+2026-05-21 08:31:00.104 [main] INFO  Connecting.RequestReader - Получено: Requester{command='add', args=LabWork{id=1, name='2', coordinates=2;2, creationDate=2026-05-21, minimalPoint=2.0, difficulty=EASY, author: name = 2;weight = 2.0;RED}, objectClass=class Collection.LabWork, user=User{login='1', password='1'}}
+2026-05-21 08:31:02.980 [main] INFO  Connecting.RequestReader - Получено: Requester{command='show', args=null, objectClass=null, user=User{login='1', password='1'}}

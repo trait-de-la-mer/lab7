@@ -211,4 +211,42 @@ public class BaseConnect {
             throw new RuntimeException(e);
         }
     }
+
+    public boolean checkUser(User user) {
+        try {
+            String sql = "SELECT password_hash FROM users WHERE login = ?";
+            PreparedStatement statement = connection.prepareStatement(sql);
+            statement.setString(1, user.getLogin());
+            ResultSet rs = statement.executeQuery();
+            if (!rs.next()) {
+                return false;
+            }
+            String dbHash = rs.getString("password_hash");
+            return dbHash.equals(user.getPassword());
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public boolean addUser(User user) {
+        try {
+            String checkSql = "SELECT login FROM users WHERE login = ?";
+            PreparedStatement checkStatement = connection.prepareStatement(checkSql);
+            checkStatement.setString(1, user.getLogin());
+            ResultSet rs = checkStatement.executeQuery();
+            if (rs.next()) {
+                System.out.println("Пользователь уже существует");
+                return false;
+            }
+            String insertSql = "INSERT INTO users(login, password_hash) VALUES (?, ?)";
+            PreparedStatement insertStatement =connection.prepareStatement(insertSql);
+            insertStatement.setString(1, user.getLogin());
+            insertStatement.setString(2, user.getPassword());
+            insertStatement.executeUpdate();
+            System.out.println("Пользователь зарегистрирован");
+            return true;
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+    }
 }

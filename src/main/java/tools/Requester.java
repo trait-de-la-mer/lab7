@@ -10,6 +10,15 @@ public class Requester<T> implements Serializable {
     private String command;
     private T args;
     private Class<T> objectClass;
+    private User user;
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
 
     public void setObjectClass(Class<T> objectClass) {
         this.objectClass = objectClass;
@@ -36,6 +45,8 @@ public class Requester<T> implements Serializable {
         return "Requester{" +
                 "command='" + command + '\'' +
                 ", args=" + args +
+                ", objectClass=" + objectClass +
+                ", user=" + user +
                 '}';
     }
 }

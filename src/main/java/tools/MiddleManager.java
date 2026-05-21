@@ -22,7 +22,13 @@ public class MiddleManager {
     private ObjectInputStream in;
     private Socket socket;
     private static final LinkedList<String> history = new LinkedList<>();
-    public void sendCom(String... nameCommand) { // проверяет на арг-ты и просит ввести сложные арг-ты и дает команду отпр
+    public void sendCom(User user, String... nameCommand) { // проверяет на арг-ты и просит ввести сложные арг-ты и дает команду отпр
+        if (nameCommand[0].equals("register")) {
+            Requester<Objects> requester = new Requester<>();
+            pullRequest(requester, nameCommand[0], null);
+            sendObj(requester, user);
+            return;
+        }
         if (nameCommand != null && nameCommand.length != 0 && !Objects.equals(nameCommand[0], "")
                 && Main.commands.containsKey(nameCommand[0].toLowerCase())) {
             int len = nameCommand.length;
@@ -44,7 +50,7 @@ public class MiddleManager {
                     Requester<UpdateArgs> requester = new Requester<>();
                     pullRequest(requester, name, updateArgs);
                     requester.setObjectClass(UpdateArgs.class);
-                    sendObj(requester);
+                    sendObj(requester, user);
                 } catch (NumberFormatException e) {
                     Consoll.printSmt("ID должен быть числом!");
                 }
@@ -52,19 +58,19 @@ public class MiddleManager {
                 if (len > 1) {Consoll.printSmt("Тут аргумент не очень нужны, но ладно");}
                 Requester<Objects> requester = new Requester<>();
                 pullRequest(requester, name, null);
-                sendObj(requester);
+                sendObj(requester, user);
             } else if (!type.isPrimitive()) {
                 if (len > 1) {Consoll.printSmt("Тут аргумент не очень нужны, но ладно");}
                 if (type.equals(LabWork.class)) {
                     LabWork labWork = Main.commands.get(nameCommand[0]).makeLab();
                     Requester<LabWork> requester = new Requester<>();
                     pullRequest(requester, nameCommand[0], labWork);
-                    sendObj(requester);
+                    sendObj(requester, user);
                 } else if (type.equals(Person.class)) {
                     Requester<Person> requester = new Requester<>();
                     Person person = Main.commands.get(nameCommand[0]).makePerson();
                     pullRequest(requester, nameCommand[0], person);
-                    sendObj(requester);
+                    sendObj(requester, user);
                 } else {
                     Consoll.printSmt("нужен неизвестный тип");
                 }
@@ -75,7 +81,7 @@ public class MiddleManager {
                         try {
                             Requester<Integer> requester = new Requester<>();
                             pullRequest(requester, nameCommand[0], Integer.parseInt(arg));
-                            sendObj(requester);
+                            sendObj(requester, user);
                         } catch (NumberFormatException ex) {
                             System.out.println("Неверный тип аргумента");
                         }
@@ -85,7 +91,7 @@ public class MiddleManager {
                         try {
                             Requester<Double> requester = new Requester<>();
                             pullRequest(requester, nameCommand[0], Double.parseDouble(arg));
-                            sendObj(requester);
+                            sendObj(requester, user);
                         } catch (NumberFormatException ex) {
                             System.out.println("Неверный тип аргумента");
                         }
@@ -93,10 +99,10 @@ public class MiddleManager {
                 } else {Consoll.printSmt("что-то не так с кол-ом аргументов");}
             }
         } else {
-            System.out.println(nameCommand != null);
-            System.out.println(nameCommand.length != 0);
-            System.out.println(!Objects.equals(nameCommand[0], ""));
-            System.out.println(Main.commands.containsKey(nameCommand[0].toLowerCase()));
+//            System.out.println(nameCommand != null);
+//            System.out.println(nameCommand.length != 0);
+//            System.out.println(!Objects.equals(nameCommand[0], ""));
+//            System.out.println(Main.commands.containsKey(nameCommand[0].toLowerCase()));
             Consoll.printSmt("уверен что написал правильно?");}
     }
 
@@ -114,7 +120,9 @@ public class MiddleManager {
         in = new ObjectInputStream(socket.getInputStream());
     }
 
-    public <T> void sendObj(Requester<T> requester) {
+    public <T> void sendObj(Requester<T> requester, User user) {
+        requester.setUser(user);
+        System.out.println(requester);
         try {
             out.writeObject(requester);
             out.flush();

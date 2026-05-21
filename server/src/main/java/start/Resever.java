@@ -35,7 +35,7 @@ public class Resever {
         );
         Consol consol = new Consol(commandManager);
         consol.start();
-        ConnectManager cm = new ConnectManager(commandManager);
+        ConnectManager cm = new ConnectManager(baseConnect, commandManager);
         cm.handle(port);
         consol.stop();
     }

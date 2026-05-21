@@ -48,10 +48,25 @@ public class Consoll {
 
     public void startConsole() {
         String line;
+        printSmt("Вводится логин, пароль, команда + аргументы (, - с новой строчки), можно register");
         boolean running = true;
         do{
+
+            String login = "1";
+            String password = "1";
+            User user = new User();
+            user.setLogin(login);
+            user.setPassword(password);
             line = generateNextLine().toLowerCase(Locale.ENGLISH).trim().replaceAll("\\s+", " ");
             String[] comAndArgs = line.split(" ");
+            try {
+                System.out.print("Введите логин: ");
+                user.setLogin(reader.readLine());
+                System.out.print("Введите пароль: ");
+                user.setPassword(reader.readLine());
+            } catch (IOException e) {
+                System.out.println("что-то не так с потоком ввода?");
+            }
             if (comAndArgs[0].equals("script")){
                 try {
                     executeScript(comAndArgs[1]);
@@ -61,8 +76,8 @@ public class Consoll {
             }else if (comAndArgs[0].equals("exit")){
                 mm.closeConnection();
                 running = false;
-            }else {
-                mm.sendCom(comAndArgs);
+            } else {
+                mm.sendCom(user, comAndArgs);
             }
         } while (running);
     }
