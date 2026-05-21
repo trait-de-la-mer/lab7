@@ -1,7 +1,6 @@
 package Connecting;
 
 import Commands.Command;
-import Commands.Save;
 import tools.*;
 
 import java.io.IOException;
@@ -53,7 +52,7 @@ public class ConnectManager {
 
                         }
                         if (com != null) {
-                            String text = commandManager.executC(com, req.getArgs());
+                            String text = commandManager.executC(com, req.getArgs(), user);
                             responseSender.sendResponse(text);
                             //stop();
                         } else {
@@ -88,7 +87,7 @@ public class ConnectManager {
         running = false;
         closeClientResources();
         Command com = commandManager.getCommands().get("save");
-        com.execute(null);
+        com.execute(null, user);
         try {
             connectionAcceptor.stop();
         } catch (IOException e) {

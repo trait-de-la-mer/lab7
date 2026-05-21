@@ -37,7 +37,7 @@ public class CollectionManager {
         this.labCollection = labCollection;
     }
 
-    public boolean remove(int index){
+    public boolean remove(int index, User user){
         try {
             baseConnect.remove(index);
             Optional<LabWork> target = labCollection.stream()
@@ -57,9 +57,9 @@ public class CollectionManager {
         }
     }
 
-    public void addElement(LabWork lab){
+    public void addElement(LabWork lab, User user){
         try {
-            baseConnect.addToDB(lab);
+            baseConnect.addToDB(lab, user);
             labCollection.addLast(lab);
         } catch (SQLException e) {
             System.out.println("не удалось добавить лабу в БД и коллекцию");
@@ -79,7 +79,7 @@ public class CollectionManager {
         }
     }
 
-    public boolean update(Long id, LabWork labWork) {
+    public boolean update(Long id, LabWork labWork, User user) {
         try {
             baseConnect.update(id, labWork);
             Optional<LabWork> target = labCollection.stream()

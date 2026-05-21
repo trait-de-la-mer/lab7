@@ -2,6 +2,7 @@ package Commands;
 
 import tools.CollectionManager;
 import tools.CommandManager;
+import tools.User;
 
 import java.util.stream.Collectors;
 
@@ -16,7 +17,7 @@ public class History extends Command{
     }
 
     @Override
-    public String execute(Object arg) {
+    public String execute(Object arg, User user) {
         String answer = CommandManager.getHistory().stream().collect(Collectors.joining("\n"));
         return answer;
     }

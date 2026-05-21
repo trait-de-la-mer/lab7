@@ -2,6 +2,7 @@ package Commands;
 
 import tools.CollectionManager;
 import tools.CommandManager;
+import tools.User;
 
 import java.util.stream.Collectors;
 
@@ -14,7 +15,7 @@ public class Help extends Command{
     }
 
     @Override
-    public String execute(Object args) {
+    public String execute(Object args, User user) {
         String answer = CommandManager.getCommands().entrySet().stream()
                 .map(entry -> entry.getKey() + " - " + entry.getValue().getInfo())
                 .collect(Collectors.joining("\n"));

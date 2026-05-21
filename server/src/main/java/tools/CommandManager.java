@@ -16,11 +16,11 @@ public class CommandManager {
         }
     }
 
-    public <T> String executC(Command cmd, T args){
+    public <T> String executC(Command cmd, T args, User user){
         try {
             String text;
             try {
-                text = cmd.execute(args);
+                text = cmd.execute(args, user);
             } catch (IllegalArgumentException ex){
                 text = ex.getMessage();
             } catch (Exception e) {

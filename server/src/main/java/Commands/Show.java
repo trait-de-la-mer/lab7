@@ -2,6 +2,7 @@ package Commands;
 
 import Collection.LabWork;
 import tools.CollectionManager;
+import tools.User;
 
 import java.util.stream.Collectors;
 
@@ -13,7 +14,7 @@ public class Show extends Command{
     }
 
     @Override
-    public String execute(Object arg) {
+    public String execute(Object arg, User user) {
         String answer = getCollectionManager().getLabCollection().stream()
                 .map(LabWork::toString)
                 .collect(Collectors.joining("\n"));

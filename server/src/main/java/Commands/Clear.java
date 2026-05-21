@@ -1,6 +1,7 @@
 package Commands;
 
 import tools.CollectionManager;
+import tools.User;
 
 public class Clear extends Command{
     //TODO CHANGE FOR DB
@@ -13,7 +14,7 @@ public class Clear extends Command{
 
 
     @Override
-    public String execute(Object arg) {
+    public String execute(Object arg, User user) {
         getCollectionManager().clearCollection();
         return "коллекция пуста";
     }

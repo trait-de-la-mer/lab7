@@ -1,6 +1,7 @@
 package Commands;
 
 import tools.CollectionManager;
+import tools.User;
 
 public class Info extends Command{
     {setName("info");
@@ -10,7 +11,7 @@ public class Info extends Command{
     }
 
     @Override
-    public String execute(Object arg) {
+    public String execute(Object arg, User user) {
         String answer = "";
         answer += "тип: " + getCollectionManager().getCollectionType() + "\n";
         answer += "дата инициализации: " + getCollectionManager().getCreationDate()  + "\n";

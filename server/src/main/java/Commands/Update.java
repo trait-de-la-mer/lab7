@@ -3,6 +3,7 @@ package Commands;
 import Collection.LabWork;
 import tools.CollectionManager;
 import tools.UpdateArgs;
+import tools.User;
 
 import java.util.Objects;
 import java.util.Optional;
@@ -19,10 +20,10 @@ public class Update extends Command<UpdateArgs>{
     }
 
     @Override
-    public String execute(UpdateArgs updateArgs) {
+    public String execute(UpdateArgs updateArgs, User user) {
         Long needId = updateArgs.getId();
         LabWork labWork = updateArgs.getLabWork();
-        boolean added = getCollectionManager().update(needId, labWork);
+        boolean added = getCollectionManager().update(needId, labWork, user);
         if (added) {
             return "Обновлена лаба по id " + needId;
         }

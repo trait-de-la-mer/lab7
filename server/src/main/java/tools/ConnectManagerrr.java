@@ -57,8 +57,9 @@ public class ConnectManagerrr {
             if (obj instanceof Requester<?> req) {
                 System.out.println("Получено: " + req);
                 Command com = commandManager.getCommands().get(req.getCommand());
+                User user = req.getUser();
                 if (com != null) {
-                    String text = commandManager.executC(com, req.getArgs());
+                    String text = commandManager.executC(com, req.getArgs(), user);
                     sendSmt(text);
                 } else {
                     System.out.println("почему-то коммманда = нул");

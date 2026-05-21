@@ -2,6 +2,7 @@ package Commands;
 
 import Collection.LabWork;
 import tools.CollectionManager;
+import tools.User;
 
 public class Add extends Command<LabWork>{
     //TODO CHANGE FOR DB
@@ -12,10 +13,10 @@ public class Add extends Command<LabWork>{
     }
 
     @Override
-    public String execute(LabWork arg) {
+    public String execute(LabWork arg, User user) {
         CollectionManager cm = getCollectionManager();
         arg.setId(cm.generateId());
-        cm.addElement(arg);
+        cm.addElement(arg, user);
         System.out.println(getCollectionManager().getLabCollection().toString());
         return "Успешно добавлено";
     }

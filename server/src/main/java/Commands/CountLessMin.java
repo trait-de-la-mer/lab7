@@ -2,6 +2,7 @@ package Commands;
 
 import Collection.LabWork;
 import tools.CollectionManager;
+import tools.User;
 
 import java.util.stream.Collectors;
 
@@ -16,7 +17,7 @@ public class CountLessMin extends Command<Double>{
     }
 
     @Override
-    public String execute(Double arg) {
+    public String execute(Double arg, User user) {
         String answer = getCollectionManager().getLabCollection().stream()
                 .filter(lab -> lab.getMinimalPoint() < arg)
                 .map(LabWork::toString)

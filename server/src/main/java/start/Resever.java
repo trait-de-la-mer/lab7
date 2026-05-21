@@ -30,8 +30,7 @@ public class Resever {
                 new Update(collectionManager),
                 new RemoveFirst(collectionManager),
                 new PrintUniqAthors(collectionManager),
-                new LessThanAuthor(collectionManager),
-                new Save(collectionManager)
+                new LessThanAuthor(collectionManager)
         );
         Consol consol = new Consol(commandManager);
         consol.start();

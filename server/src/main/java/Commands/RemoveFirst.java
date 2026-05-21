@@ -1,6 +1,7 @@
 package Commands;
 
 import tools.CollectionManager;
+import tools.User;
 
 public class RemoveFirst extends Command{
     //TODO CHANGE FOR DB
@@ -11,8 +12,8 @@ public class RemoveFirst extends Command{
     }
 
     @Override
-    public String execute(Object arg) {
-        getCollectionManager().remove(0);
+    public String execute(Object arg, User user) {
+        getCollectionManager().remove(0, user);
         return "Удален первый элемент коллекции";
     }
 }

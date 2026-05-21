@@ -27,7 +27,7 @@ public class Consol {
                         case "save" -> {
                             log.info("Сохранено");
                             Command com = commandManager.getCommands().get("save");
-                            com.execute(null);
+                            com.execute(null, null);
                         }
                         case "exit" -> {
                             //TODO obrabotat exit

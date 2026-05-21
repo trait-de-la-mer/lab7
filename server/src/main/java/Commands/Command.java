@@ -1,6 +1,7 @@
 package Commands;
 
 import tools.CollectionManager;
+import tools.User;
 
 public abstract class Command<T>{
     private String name = "";
@@ -32,5 +33,5 @@ public abstract class Command<T>{
         return name;
     }
 
-    public abstract String execute(T arg);
+    public abstract String execute(T arg, User user);
 }

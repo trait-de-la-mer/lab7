@@ -2,6 +2,7 @@ package Commands;
 
 import Collection.LabWork;
 import tools.CollectionManager;
+import tools.User;
 
 public class Head extends Command{
     {
@@ -14,7 +15,7 @@ public class Head extends Command{
     }
 
     @Override
-    public String execute(Object arg) {
+    public String execute(Object arg, User user) {
         LabWork firstElement = getCollectionManager().getElemnt(0);
         return firstElement.toString();
     }

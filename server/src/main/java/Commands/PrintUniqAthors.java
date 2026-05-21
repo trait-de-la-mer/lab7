@@ -3,6 +3,8 @@ package Commands;
 import Collection.LabWork;
 import Collection.Person;
 import tools.CollectionManager;
+import tools.User;
+
 import java.util.stream.Collectors;
 
 public class PrintUniqAthors extends Command{
@@ -14,7 +16,7 @@ public class PrintUniqAthors extends Command{
     }
 
     @Override
-    public String execute(Object arg) {
+    public String execute(Object arg, User user) {
         String answer = getCollectionManager().getLabCollection().stream()
                 .map(LabWork::getAuthor)
                 .distinct()

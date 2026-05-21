@@ -82,44 +82,48 @@ public class BaseConnect {
         return labs;
     }
 
-    public void addToDB(LabWork labWork) throws SQLException {
-            String coordinatesSql =
-                    "INSERT INTO coordinates(x, y) VALUES (?, ?)";
+    public void addToDB(LabWork labWork, User user) throws SQLException {
+        String userSql = "SELECT id FROM users WHERE login = ?";
+        PreparedStatement userStatement = connection.prepareStatement(userSql);
+        userStatement.setString(1, user.getLogin());
+        ResultSet userRs = userStatement.executeQuery();
+        userRs.next();
+        int userId = userRs.getInt("id");
+        String coordinatesSql = "INSERT INTO coordinates(x, y) VALUES (?, ?)";
+        PreparedStatement coordinatesStatement = connection.prepareStatement(coordinatesSql,
+                PreparedStatement.RETURN_GENERATED_KEYS);
+        coordinatesStatement.setLong(1, labWork.getCoordinates().getX());
+        coordinatesStatement.setFloat(2, labWork.getCoordinates().getY());
+        coordinatesStatement.executeUpdate();
+        ResultSet coordinatesKeys = coordinatesStatement.getGeneratedKeys();
+        coordinatesKeys.next();
+        int coordinatesId = coordinatesKeys.getInt(1);
 
-            PreparedStatement coordinatesStatement = connection.prepareStatement(coordinatesSql,
-                    PreparedStatement.RETURN_GENERATED_KEYS);
+        String personSql = "INSERT INTO person(name, weight, eye_color) VALUES (?, ?, ?)";
+        PreparedStatement personStatement = connection.prepareStatement(personSql,
+                        PreparedStatement.RETURN_GENERATED_KEYS);
+        personStatement.setString(1, labWork.getAuthor().getName());
+        personStatement.setDouble(2, labWork.getAuthor().getWeight());
+        personStatement.setString(3, labWork.getAuthor().getEyeColor().toString());
+        personStatement.executeUpdate();
+        var personKeys = personStatement.getGeneratedKeys();
+        personKeys.next();
+        int personId = personKeys.getInt(1);
 
-            coordinatesStatement.setLong(1, labWork.getCoordinates().getX());
-            coordinatesStatement.setFloat(2, labWork.getCoordinates().getY());
-            coordinatesStatement.executeUpdate();
-            ResultSet coordinatesKeys = coordinatesStatement.getGeneratedKeys();
-            coordinatesKeys.next();
-            int coordinatesId = coordinatesKeys.getInt(1);
-
-            String personSql = "INSERT INTO person(name, weight, eye_color) VALUES (?, ?, ?)";
-            PreparedStatement personStatement = connection.prepareStatement(personSql,
-                            PreparedStatement.RETURN_GENERATED_KEYS);
-            personStatement.setString(1, labWork.getAuthor().getName());
-            personStatement.setDouble(2, labWork.getAuthor().getWeight());
-            personStatement.setString(3, labWork.getAuthor().getEyeColor().toString());
-            personStatement.executeUpdate();
-            var personKeys = personStatement.getGeneratedKeys();
-            personKeys.next();
-            int personId = personKeys.getInt(1);
-
-            String labSql = """
-                    INSERT INTO lab_work(name, coordinates_id, creation_date, minimal_point, difficulty, author_id)
-                    VALUES (?, ?, ?, ?, ?, ?)
-                    """;
-            PreparedStatement labStatement = connection.prepareStatement(labSql);
-            labStatement.setString(1, labWork.getName());
-            labStatement.setInt(2, coordinatesId);
-            labStatement.setDate(3, java.sql.Date.valueOf(labWork.getCreationDate()));
-            labStatement.setDouble(4, labWork.getMinimalPoint());
-            labStatement.setString(5, labWork.getDifficulty().toString());
-            labStatement.setInt(6, personId);
-            labStatement.executeUpdate();
-            System.out.println("labwork add");
+        String labSql = """
+                INSERT INTO lab_work(name, coordinates_id, creation_date, minimal_point, difficulty, author_id, user_id)
+                VALUES (?, ?, ?, ?, ?, ?, ?)
+                """;
+        PreparedStatement labStatement = connection.prepareStatement(labSql);
+        labStatement.setString(1, labWork.getName());
+        labStatement.setInt(2, coordinatesId);
+        labStatement.setDate(3, java.sql.Date.valueOf(labWork.getCreationDate()));
+        labStatement.setDouble(4, labWork.getMinimalPoint());
+        labStatement.setString(5, labWork.getDifficulty().toString());
+        labStatement.setInt(6, personId);
+        labStatement.setInt(7, userId);
+        labStatement.executeUpdate();
+        System.out.println("labwork add");
     }
 
     public void remove (long id) throws SQLException {
