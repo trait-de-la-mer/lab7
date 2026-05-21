@@ -13,7 +13,6 @@ import java.util.LinkedList;
 public class BaseConnect {
     Statement statement;
     Connection connection;
-    //TODO ИЗМЕНИТЬ ПО ИД, УДАЛИТЬ ВСЕ, ЗАКРЫТЬ СОЕДИНЕНИЕ
     public BaseConnect(String user, String password){
         String url = "jdbc:postgresql://localhost:5432/mydb";
         try {
@@ -168,6 +167,48 @@ public class BaseConnect {
             System.out.println("коллекция очищена");
         } catch (Exception e) {
             System.out.println(e.getMessage());
+        }
+    }
+
+    public void update(long id, LabWork labWork) throws SQLException {
+        try {
+            String selectSql = "SELECT coordinates_id, author_id FROM lab_work WHERE id = ?";
+            PreparedStatement selectStatement = connection.prepareStatement(selectSql);
+            selectStatement.setLong(1, id);
+            ResultSet rs = selectStatement.executeQuery();
+            if (!rs.next()) {
+                throw new IllegalArgumentException("LabWork с таким id не найден");
+            }
+            int coordinatesId = rs.getInt("coordinates_id");
+            int authorId = rs.getInt("author_id");
+            String updateCoordinatesSql = "UPDATE coordinates SET x = ?, y = ? WHERE id = ?";
+            PreparedStatement updateCoordinatesStatement = connection.prepareStatement(updateCoordinatesSql);
+            updateCoordinatesStatement.setLong(1, labWork.getCoordinates().getX());
+            updateCoordinatesStatement.setFloat(2, labWork.getCoordinates().getY());
+            updateCoordinatesStatement.setInt(3, coordinatesId);
+            updateCoordinatesStatement.executeUpdate();
+            String updatePersonSql = "UPDATE person SET name = ?, weight = ?, eye_color = ? WHERE id = ?";
+            PreparedStatement updatePersonStatement = connection.prepareStatement(updatePersonSql);
+            updatePersonStatement.setString(1, labWork.getAuthor().getName());
+            updatePersonStatement.setDouble(2, labWork.getAuthor().getWeight());
+            updatePersonStatement.setString(3, labWork.getAuthor().getEyeColor().toString());
+            updatePersonStatement.setInt(4, authorId);
+            updatePersonStatement.executeUpdate();
+            String updateLabSql = """
+                UPDATE lab_work
+                SET name = ?, creation_date = ?, minimal_point = ?, difficulty = ?
+                WHERE id = ?
+                """;
+            PreparedStatement updateLabStatement = connection.prepareStatement(updateLabSql);
+            updateLabStatement.setString(1, labWork.getName());
+            updateLabStatement.setDate(2,java.sql.Date.valueOf(labWork.getCreationDate()));
+            updateLabStatement.setDouble(3,labWork.getMinimalPoint());
+            updateLabStatement.setString(4, labWork.getDifficulty().toString());
+            updateLabStatement.setLong(5,id);
+            updateLabStatement.executeUpdate();
+            System.out.println("LabWork обновлён");
+        } catch (Exception e) {
+            throw new RuntimeException(e);
         }
     }
 }

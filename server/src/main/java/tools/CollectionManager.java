@@ -5,6 +5,7 @@ import Collection.LabWork;
 import java.sql.SQLException;
 import java.time.ZonedDateTime;
 import java.util.LinkedList;
+import java.util.Objects;
 import java.util.Optional;
 
 public class CollectionManager {
@@ -75,6 +76,24 @@ public class CollectionManager {
         } catch (SQLException e) {
             System.out.println("не удалось очистить лабу в БД и коллекцию");
             System.out.println(e.getMessage());
+        }
+    }
+
+    public boolean update(Long id, LabWork labWork) {
+        try {
+            baseConnect.update(id, labWork);
+            Optional<LabWork> target = labCollection.stream()
+                    .filter(lab -> Objects.equals(lab.getId(), id))
+                    .findFirst();
+            if (target.isPresent()) {
+                labWork.setId(id);
+                labCollection.remove(target.get());
+                labCollection.add(labWork);
+                return true;
+            }
+            return false;
+        } catch (SQLException e){
+            throw new IllegalArgumentException(e.getMessage());
         }
     }
 
