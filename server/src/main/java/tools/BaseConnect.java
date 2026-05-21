@@ -70,6 +70,11 @@ public class BaseConnect {
                     lab.setDifficulty(Difficulty.fromString(rs.getString("difficulty")));
                     labs.add(lab);
                 }
+                String idSql = "SELECT last_value FROM lab_work_id_seq;";
+                rs = statement.executeQuery(idSql);
+                rs.next();
+                CollectionManager.setLastId(rs.getLong("last_value"));
+
             } catch (SQLException e) {
                 System.out.println("что-то не так с бд, не получилось прочитать");
                 System.out.println(e.getMessage());
@@ -119,8 +124,10 @@ public class BaseConnect {
     }
 
     public void remove (long id) throws SQLException {
-        String selectSql = """
-        SELECT coordinates_id, author_id
+        try {
+            String selectSql = """
+        
+                    SELECT coordinates_id, author_id
         FROM lab_work
         WHERE id = ?
         """;
@@ -148,5 +155,19 @@ public class BaseConnect {
         deletePersonStatement.setInt(1, authorId);
         deletePersonStatement.executeUpdate();
         System.out.println("labwork из бд удалён");
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public void clear() throws SQLException {
+        try {
+            String sql = "TRUNCATE TABLE lab_work, coordinates, person RESTART IDENTITY CASCADE";
+            PreparedStatement statement = connection.prepareStatement(sql);
+            statement.executeUpdate();
+            System.out.println("коллекция очищена");
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
     }
 }

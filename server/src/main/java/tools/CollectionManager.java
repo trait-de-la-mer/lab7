@@ -5,11 +5,12 @@ import Collection.LabWork;
 import java.sql.SQLException;
 import java.time.ZonedDateTime;
 import java.util.LinkedList;
+import java.util.Optional;
 
 public class CollectionManager {
-    private long lastId = 0;
+    private static long lastId = 0;
     private LinkedList<LabWork> labCollection = new LinkedList<>();
-    private BaseConnect baseConnect;
+    private final BaseConnect baseConnect;
 
     public CollectionManager(BaseConnect baseConnect) {
         this.baseConnect = baseConnect;
@@ -17,8 +18,10 @@ public class CollectionManager {
 
     private final ZonedDateTime creationDate = ZonedDateTime.now();
 
-    public void setLastId(long lastId) {
-        this.lastId = lastId;
+    public static void setLastId(long lastId) {
+        if (lastId > CollectionManager.lastId) {
+            CollectionManager.lastId = lastId;
+        }
     }
 
     public long getLastId() {
@@ -33,11 +36,18 @@ public class CollectionManager {
         this.labCollection = labCollection;
     }
 
-    public LabWork remove  (int index){
+    public boolean remove(int index){
         try {
             baseConnect.remove(index);
-            LabWork labWork = labCollection.remove(index);
-            return labWork;
+            Optional<LabWork> target = labCollection.stream()
+                    .filter(lab -> lab.getId() == index)
+                    .findFirst();
+            if (target.isPresent()) {
+                labCollection.remove(target.get());
+                return true;
+            }
+
+            return false;
         } catch (SQLException e) {
             System.out.println(e.getMessage());
             throw new IllegalArgumentException("не удалось удалить лабу из БД и из коллекцию");
@@ -59,7 +69,13 @@ public class CollectionManager {
     public LabWork getElemnt(int index){return labCollection.get(index);}
 
     public void clearCollection(){
-        labCollection.clear();
+        try {
+            baseConnect.clear();
+            labCollection.clear();
+        } catch (SQLException e) {
+            System.out.println("не удалось очистить лабу в БД и коллекцию");
+            System.out.println(e.getMessage());
+        }
     }
 
     public String getCollectionType() {
