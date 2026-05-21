@@ -2,12 +2,19 @@ package tools;
 
 import Collection.LabWork;
 
+import java.sql.SQLException;
 import java.time.ZonedDateTime;
 import java.util.LinkedList;
 
 public class CollectionManager {
     private long lastId = 0;
     private LinkedList<LabWork> labCollection = new LinkedList<>();
+    private BaseConnect baseConnect;
+
+    public CollectionManager(BaseConnect baseConnect) {
+        this.baseConnect = baseConnect;
+    }
+
     private final ZonedDateTime creationDate = ZonedDateTime.now();
 
     public void setLastId(long lastId) {
@@ -31,15 +38,16 @@ public class CollectionManager {
     }
 
     public void addElement(LabWork lab){
-        labCollection.addLast(lab);
+        try {
+            baseConnect.addToDB(lab);
+            labCollection.addLast(lab);
+        } catch (SQLException e) {
+            System.out.println("не удалось добавить лабу в БД и коллекцию");
+            System.out.println(e.getMessage());
+        }
     }
 
     public LabWork getElemnt(int index){return labCollection.get(index);}
-
-//    public void addElement(LabWork lab, Long id){
-//        labCollection.addLast(lab);
-//        labCollection.getLast().setId(id);
-//    }
 
     public void clearCollection(){
         labCollection.clear();

@@ -76,3 +76,24 @@
 2026-05-21 02:24:30.119 [main] INFO  Connecting.RequestReader - Получено: Requester{command='show', args=null, objectClass=null}
 2026-05-21 02:26:34.252 [Server-Console-Thread] INFO  tools.Consol - Сохранено
 2026-05-21 02:26:34.254 [Server-Console-Thread] WARN  tools.CSVParser - Произошла ошибка при записи в файл 
+2026-05-21 04:40:25.277 [main] INFO  Connecting.ConnectionAcceptor - Сервер запущен на порту 6789
+2026-05-21 04:40:25.277 [Server-Console-Thread] INFO  tools.Consol - Серверная консоль активна. Доступные команды: save, exit
+2026-05-21 04:40:25.278 [main] INFO  Connecting.ConnectionAcceptor - Ожидание клиента...
+2026-05-21 04:40:26.237 [main] INFO  Connecting.ConnectionAcceptor - Подключен: /127.0.0.1
+2026-05-21 04:40:30.246 [main] INFO  Connecting.RequestReader - Получено: Requester{command='show', args=null, objectClass=null}
+2026-05-21 04:40:43.215 [main] INFO  Connecting.RequestReader - Получено: Requester{command='add', args=LabWork{id=1, name='5', coordinates=5;5, creationDate=2026-05-21, minimalPoint=5.0, difficulty=NORMAL, author: name = 5;weight = 5.0;RED}, objectClass=class Collection.LabWork}
+2026-05-21 04:41:01.736 [main] INFO  Connecting.RequestReader - Получено: Requester{command='show', args=null, objectClass=null}
+2026-05-21 04:45:56.673 [Server-Console-Thread] INFO  tools.Consol - Серверная консоль активна. Доступные команды: save, exit
+2026-05-21 04:45:56.673 [main] INFO  Connecting.ConnectionAcceptor - Сервер запущен на порту 6789
+2026-05-21 04:45:56.674 [main] INFO  Connecting.ConnectionAcceptor - Ожидание клиента...
+2026-05-21 04:45:57.092 [main] INFO  Connecting.ConnectionAcceptor - Подключен: /127.0.0.1
+2026-05-21 04:45:59.003 [main] INFO  Connecting.RequestReader - Получено: Requester{command='show', args=null, objectClass=null}
+2026-05-21 04:46:09.139 [main] INFO  Connecting.RequestReader - Получено: Requester{command='add', args=LabWork{id=1, name='5', coordinates=5;5, creationDate=2026-05-21, minimalPoint=5.0, difficulty=NORMAL, author: name = 5;weight = 5.0;RED}, objectClass=class Collection.LabWork}
+2026-05-21 04:46:13.964 [main] INFO  Connecting.RequestReader - Получено: Requester{command='show', args=null, objectClass=null}
+2026-05-21 04:49:45.351 [main] INFO  Connecting.ConnectionAcceptor - Сервер запущен на порту 6789
+2026-05-21 04:49:45.351 [Server-Console-Thread] INFO  tools.Consol - Серверная консоль активна. Доступные команды: save, exit
+2026-05-21 04:49:45.352 [main] INFO  Connecting.ConnectionAcceptor - Ожидание клиента...
+2026-05-21 04:49:46.271 [main] INFO  Connecting.ConnectionAcceptor - Подключен: /127.0.0.1
+2026-05-21 04:49:49.802 [main] INFO  Connecting.RequestReader - Получено: Requester{command='show', args=null, objectClass=null}
+2026-05-21 04:49:57.985 [main] INFO  Connecting.RequestReader - Получено: Requester{command='add', args=LabWork{id=1, name='5', coordinates=5;5, creationDate=2026-05-21, minimalPoint=5.0, difficulty=EASY, author: name = 5;weight = 5.0;RED}, objectClass=class Collection.LabWork}
+2026-05-21 04:50:00.649 [main] INFO  Connecting.RequestReader - Получено: Requester{command='show', args=null, objectClass=null}
