@@ -39,7 +39,7 @@ public class CollectionManager {
 
     public boolean remove(int index, User user){
         try {
-            baseConnect.remove(index);
+            baseConnect.remove(index, user);
             Optional<LabWork> target = labCollection.stream()
                     .filter(lab -> lab.getId() == index)
                     .findFirst();
@@ -69,9 +69,9 @@ public class CollectionManager {
 
     public LabWork getElemnt(int index){return labCollection.get(index);}
 
-    public void clearCollection(){
+    public void clearCollection(User user){
         try {
-            baseConnect.clear();
+            baseConnect.clear(user);
             labCollection.clear();
         } catch (SQLException e) {
             System.out.println("не удалось очистить лабу в БД и коллекцию");
@@ -81,7 +81,7 @@ public class CollectionManager {
 
     public boolean update(Long id, LabWork labWork, User user) {
         try {
-            baseConnect.update(id, labWork);
+            baseConnect.update(id, labWork, user);
             Optional<LabWork> target = labCollection.stream()
                     .filter(lab -> Objects.equals(lab.getId(), id))
                     .findFirst();

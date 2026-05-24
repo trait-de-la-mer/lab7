@@ -126,62 +126,94 @@ public class BaseConnect {
         System.out.println("labwork add");
     }
 
-    public void remove (long id) throws SQLException {
+    public void remove (long id, User user) throws SQLException {
         try {
-            String selectSql = """
-        
-                    SELECT coordinates_id, author_id
-        FROM lab_work
-        WHERE id = ?
-        """;
-        PreparedStatement selectStatement = connection.prepareStatement(selectSql);
-        selectStatement.setLong(1, id);
-        ResultSet rs = selectStatement.executeQuery();
-        if (!rs.next()) {
-            throw new IllegalArgumentException("LabWork с таким id не найден");
-        }
-        int coordinatesId = rs.getInt("coordinates_id");
-        int authorId = rs.getInt("author_id");
+            String findUsersql = "SELECT id FROM users WHERE password_hash = ? and login = ?";
+            PreparedStatement selectUser = connection.prepareStatement(findUsersql);
+            selectUser.setString(1, user.getPassword());
+            selectUser.setString(2, user.getLogin());
+            ResultSet idUser = selectUser.executeQuery();
+            idUser.next();
+            int userId = idUser.getInt("id");
+            String selectSql = "SELECT coordinates_id, author_id FROM lab_work WHERE id = ? and user_id = ?";
+            PreparedStatement selectStatement = connection.prepareStatement(selectSql);
+            selectStatement.setLong(1, id);
+            selectStatement.setInt(2, userId);
+            ResultSet rs = selectStatement.executeQuery();
+            if (!rs.next()) {
+                throw new IllegalArgumentException("LabWork с таким id не найден или нет прав");
+            }
+            int coordinatesId = rs.getInt("coordinates_id");
+            int authorId = rs.getInt("author_id");
 
-        String deleteLabSql = "DELETE FROM lab_work WHERE id = ?";
-        PreparedStatement deleteLabStatement = connection.prepareStatement(deleteLabSql);
-        deleteLabStatement.setLong(1, id);
-        deleteLabStatement.executeUpdate();
+            String deleteLabSql = "DELETE FROM lab_work WHERE id = ?";
+            PreparedStatement deleteLabStatement = connection.prepareStatement(deleteLabSql);
+            deleteLabStatement.setLong(1, id);
+            deleteLabStatement.executeUpdate();
 
-        String deleteCoordinatesSql = "DELETE FROM coordinates WHERE id = ?";
-        PreparedStatement deleteCoordinatesStatement = connection.prepareStatement(deleteCoordinatesSql);
-        deleteCoordinatesStatement.setInt(1, coordinatesId);
-        deleteCoordinatesStatement.executeUpdate();
+            String deleteCoordinatesSql = "DELETE FROM coordinates WHERE id = ?";
+            PreparedStatement deleteCoordinatesStatement = connection.prepareStatement(deleteCoordinatesSql);
+            deleteCoordinatesStatement.setInt(1, coordinatesId);
+            deleteCoordinatesStatement.executeUpdate();
 
-        String deletePersonSql = "DELETE FROM person WHERE id = ?";
-        PreparedStatement deletePersonStatement = connection.prepareStatement(deletePersonSql);
-        deletePersonStatement.setInt(1, authorId);
-        deletePersonStatement.executeUpdate();
-        System.out.println("labwork из бд удалён");
+            String deletePersonSql = "DELETE FROM person WHERE id = ?";
+            PreparedStatement deletePersonStatement = connection.prepareStatement(deletePersonSql);
+            deletePersonStatement.setInt(1, authorId);
+            deletePersonStatement.executeUpdate();
+            System.out.println("labwork из бд удалён");
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
     }
 
-    public void clear() throws SQLException {
+    public void clear(User user) throws SQLException {
         try {
+            String userSql = "SELECT id FROM users WHERE login = ?";
+            PreparedStatement userStatement = connection.prepareStatement(userSql);
+            userStatement.setString(1, user.getLogin());
+            ResultSet userRs = userStatement.executeQuery();
+            userRs.next();
+            int userId = userRs.getInt("id");
+            String countAllSql = "SELECT COUNT(*) FROM lab_work";
+            PreparedStatement countAllStatement = connection.prepareStatement(countAllSql);
+            ResultSet allRs = countAllStatement.executeQuery();
+            allRs.next();
+            int allCount = allRs.getInt(1);
+            String countUserSql = "SELECT COUNT(*) FROM lab_work WHERE user_id = ?";
+            PreparedStatement countUserStatement = connection.prepareStatement(countUserSql);
+            countUserStatement.setInt(1, userId);
+            ResultSet userCountRs = countUserStatement.executeQuery();
+            userCountRs.next();
+            int userCount = userCountRs.getInt(1);
+            if (allCount != userCount) {
+                throw new IllegalArgumentException("В коллекции не все эл-ты принадлежат заданному пользователю");
+            }
             String sql = "TRUNCATE TABLE lab_work, coordinates, person RESTART IDENTITY CASCADE";
             PreparedStatement statement = connection.prepareStatement(sql);
             statement.executeUpdate();
             System.out.println("коллекция очищена");
         } catch (Exception e) {
-            System.out.println(e.getMessage());
+            throw new RuntimeException(e);
         }
     }
 
-    public void update(long id, LabWork labWork) throws SQLException {
+    public void update(long id, LabWork labWork, User user) throws SQLException {
         try {
-            String selectSql = "SELECT coordinates_id, author_id FROM lab_work WHERE id = ?";
+            String findUsersql = "SELECT id FROM users WHERE password_hash = ? and login = ?";
+            PreparedStatement selectUser = connection.prepareStatement(findUsersql);
+            selectUser.setString(1, user.getPassword());
+            selectUser.setString(2, user.getLogin());
+            ResultSet idUser = selectUser.executeQuery();
+            idUser.next();
+            int userId = idUser.getInt("id");
+            String selectSql = "SELECT coordinates_id, author_id FROM lab_work WHERE id = ? and user_id = ?";
             PreparedStatement selectStatement = connection.prepareStatement(selectSql);
             selectStatement.setLong(1, id);
+            selectStatement.setLong(2, userId);
             ResultSet rs = selectStatement.executeQuery();
+            System.out.println();
             if (!rs.next()) {
-                throw new IllegalArgumentException("LabWork с таким id не найден");
+                throw new IllegalArgumentException("LabWork с таким id не найден или этот пользователь не может изменить эту лабу");
             }
             int coordinatesId = rs.getInt("coordinates_id");
             int authorId = rs.getInt("author_id");
