@@ -437,3 +437,25 @@
 2026-05-25 01:48:15.245 [main] INFO  Connecting.RequestReader - Получено: Requester{command='add', args=LabWork{id=1, name='1', coordinates=1;1, creationDate=2026-05-25, minimalPoint=1.0, difficulty=EASY, author: name = 1;weight = 1.0;RED}, objectClass=class Collection.LabWork, user=User{login='1', password='1'}}
 2026-05-25 01:48:24.698 [main] INFO  Connecting.RequestReader - Получено: Requester{command='add', args=LabWork{id=1, name='3', coordinates=3;3, creationDate=2026-05-25, minimalPoint=3.0, difficulty=EASY, author: name = 3;weight = 3.0;BLACK}, objectClass=class Collection.LabWork, user=User{login='2', password='2'}}
 2026-05-25 01:48:33.484 [main] INFO  Connecting.RequestReader - Получено: Requester{command='clear', args=null, objectClass=null, user=User{login='1', password='1'}}
+2026-05-25 02:18:26.687 [main] INFO  Connecting.RequestReader - Получено: Requester{command='register', args=null, objectClass=null, user=User{login='1', password='2'}}
+2026-05-25 02:22:32.083 [main] INFO  Connecting.ConnectionAcceptor - Сервер запущен на порту 6789
+2026-05-25 02:22:32.083 [Server-Console-Thread] INFO  tools.Consol - Серверная консоль активна. Доступные команды: save, exit
+2026-05-25 02:22:32.085 [main] INFO  Connecting.ConnectionAcceptor - Ожидание клиента...
+2026-05-25 02:22:32.771 [main] INFO  Connecting.ConnectionAcceptor - Подключен: /127.0.0.1
+2026-05-25 02:22:36.699 [main] INFO  Connecting.RequestReader - Получено: Requester{command='show', args=null, objectClass=null, user=User{login='1', password='1'}}
+2026-05-25 02:22:45.676 [main] INFO  Connecting.RequestReader - Получено: Requester{command='register', args=null, objectClass=null, user=User{login='1', password='1'}}
+2026-05-25 02:22:48.986 [main] INFO  Connecting.RequestReader - Получено: Requester{command='show', args=null, objectClass=null, user=User{login='1', password='1'}}
+2026-05-25 02:23:52.739 [main] INFO  Connecting.ConnectionAcceptor - Сервер запущен на порту 6789
+2026-05-25 02:23:52.739 [Server-Console-Thread] INFO  tools.Consol - Серверная консоль активна. Доступные команды: save, exit
+2026-05-25 02:23:52.741 [main] INFO  Connecting.ConnectionAcceptor - Ожидание клиента...
+2026-05-25 02:23:53.030 [main] INFO  Connecting.ConnectionAcceptor - Подключен: /127.0.0.1
+2026-05-25 02:23:59.108 [main] INFO  Connecting.RequestReader - Получено: Requester{command='show', args=null, objectClass=null, user=User{login='1', password='1'}}
+2026-05-25 02:24:05.419 [main] INFO  Connecting.RequestReader - Получено: Requester{command='register', args=null, objectClass=null, user=User{login='1', password='1'}}
+2026-05-25 02:24:09.956 [main] INFO  Connecting.RequestReader - Получено: Requester{command='show', args=null, objectClass=null, user=User{login='1', password='1'}}
+2026-05-25 02:24:23.469 [main] INFO  Connecting.RequestReader - Получено: Requester{command='add', args=LabWork{id=1, name='2', coordinates=2;2, creationDate=2026-05-25, minimalPoint=2.0, difficulty=EASY, author: name = 2;weight = 2.0;RED}, objectClass=class Collection.LabWork, user=User{login='2', password='2'}}
+2026-05-25 02:24:34.468 [main] INFO  Connecting.RequestReader - Получено: Requester{command='add', args=LabWork{id=1, name='1', coordinates=1;1, creationDate=2026-05-25, minimalPoint=1.0, difficulty=EASY, author: name = 1;weight = 1.0;RED}, objectClass=class Collection.LabWork, user=User{login='1', password='1'}}
+2026-05-25 02:25:25.685 [main] INFO  Connecting.RequestReader - Получено: Requester{command='show', args=null, objectClass=null, user=User{login='1', password='1'}}
+2026-05-25 02:25:37.486 [main] INFO  Connecting.RequestReader - Получено: Requester{command='remove', args=28, objectClass=class java.lang.Integer, user=User{login='1', password='2'}}
+2026-05-25 02:25:44.922 [main] INFO  Connecting.RequestReader - Получено: Requester{command='remove', args=1, objectClass=class java.lang.Integer, user=User{login='1', password='1'}}
+2026-05-25 02:25:50.545 [main] INFO  Connecting.RequestReader - Получено: Requester{command='remove', args=28, objectClass=class java.lang.Integer, user=User{login='1', password='1'}}
+2026-05-25 02:25:53.625 [main] INFO  Connecting.RequestReader - Получено: Requester{command='show', args=null, objectClass=null, user=User{login='1', password='1'}}

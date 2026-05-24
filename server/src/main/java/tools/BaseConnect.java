@@ -6,6 +6,8 @@ import Collection.Difficulty;
 import Collection.LabWork;
 import Collection.Person;
 
+import java.nio.charset.StandardCharsets;
+import java.security.MessageDigest;
 import java.sql.*;
 import java.time.LocalDate;
 import java.util.LinkedList;
@@ -98,7 +100,6 @@ public class BaseConnect {
         ResultSet coordinatesKeys = coordinatesStatement.getGeneratedKeys();
         coordinatesKeys.next();
         int coordinatesId = coordinatesKeys.getInt(1);
-
         String personSql = "INSERT INTO person(name, weight, eye_color) VALUES (?, ?, ?)";
         PreparedStatement personStatement = connection.prepareStatement(personSql,
                         PreparedStatement.RETURN_GENERATED_KEYS);
@@ -130,7 +131,7 @@ public class BaseConnect {
         try {
             String findUsersql = "SELECT id FROM users WHERE password_hash = ? and login = ?";
             PreparedStatement selectUser = connection.prepareStatement(findUsersql);
-            selectUser.setString(1, user.getPassword());
+            selectUser.setString(1, makeHash(user.getPassword()));
             selectUser.setString(2, user.getLogin());
             ResultSet idUser = selectUser.executeQuery();
             idUser.next();
@@ -201,7 +202,7 @@ public class BaseConnect {
         try {
             String findUsersql = "SELECT id FROM users WHERE password_hash = ? and login = ?";
             PreparedStatement selectUser = connection.prepareStatement(findUsersql);
-            selectUser.setString(1, user.getPassword());
+            selectUser.setString(1, makeHash(user.getPassword()));
             selectUser.setString(2, user.getLogin());
             ResultSet idUser = selectUser.executeQuery();
             idUser.next();
@@ -258,7 +259,7 @@ public class BaseConnect {
                 return false;
             }
             String dbHash = rs.getString("password_hash");
-            return dbHash.equals(user.getPassword());
+            return dbHash.equals(makeHash(user.getPassword()));
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
@@ -275,14 +276,28 @@ public class BaseConnect {
                 return false;
             }
             String insertSql = "INSERT INTO users(login, password_hash) VALUES (?, ?)";
-            PreparedStatement insertStatement =connection.prepareStatement(insertSql);
+            PreparedStatement insertStatement = connection.prepareStatement(insertSql);
             insertStatement.setString(1, user.getLogin());
-            insertStatement.setString(2, user.getPassword());
+            insertStatement.setString(2, makeHash(user.getPassword()));
             insertStatement.executeUpdate();
             System.out.println("Пользователь зарегистрирован");
             return true;
         } catch (Exception e) {
-            throw new RuntimeException(e);
+            throw new IllegalArgumentException(e.getMessage());
+        }
+    }
+
+    private String makeHash(String password){
+        try {
+            MessageDigest md = MessageDigest.getInstance("SHA-224");
+            byte[] hashBytes = md.digest(password.getBytes(StandardCharsets.UTF_8));
+            StringBuilder sb = new StringBuilder();
+            for (byte b : hashBytes) {
+                sb.append(String.format("%02x", b));
+            }
+            return sb.toString();
+        } catch (Exception e) {
+            throw new IllegalArgumentException(e.getMessage());
         }
     }
 }
