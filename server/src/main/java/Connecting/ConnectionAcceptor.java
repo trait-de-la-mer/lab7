@@ -9,7 +9,7 @@ import java.net.Socket;
 
 public class ConnectionAcceptor {
     private static final Logger log = LogManager.getLogger(ConnectionAcceptor.class);
-    private ServerSocket serv;
+    private volatile ServerSocket serv;
         public void start(int port) throws IOException {
             serv = new ServerSocket(port);
             log.info("Сервер запущен на порту " + port);
@@ -22,14 +22,14 @@ public class ConnectionAcceptor {
             return client;
         }
 
-        public void stop() throws IOException {
+        public synchronized void stop() throws IOException {
             if (serv != null && !serv.isClosed()) {
                 serv.close();
                 log.info("Сокет закрыт");
             }
         }
 
-        public boolean isRunning() {
+        public synchronized boolean isRunning() {
             return serv != null && !serv.isClosed();
         }
 }
