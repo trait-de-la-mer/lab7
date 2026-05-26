@@ -22,6 +22,14 @@ public class MiddleManager {
     private ObjectInputStream in;
     private Socket socket;
     private static final LinkedList<String> history = new LinkedList<>();
+
+    public MiddleManager(int port) throws IOException {
+        socket = new Socket("localhost", port);
+        Consoll.printSmt("Вроде подключились по порту: " + port);
+        out = new ObjectOutputStream(socket.getOutputStream());
+        in = new ObjectInputStream(socket.getInputStream());
+    }
+
     public void sendCom(User user, String... nameCommand) { // проверяет на арг-ты и просит ввести сложные арг-ты и дает команду отпр
         if (nameCommand[0].equals("register")) {
             Requester<Objects> requester = new Requester<>();
@@ -112,12 +120,6 @@ public class MiddleManager {
         if (obj != null) {
             requester.setObjectClass((Class<T>) obj.getClass());
         }
-    }
-    public MiddleManager(int port) throws IOException {
-        socket = new Socket("localhost", port);
-        Consoll.printSmt("Вроде подключились по порту: " + port);
-        out = new ObjectOutputStream(socket.getOutputStream());
-        in = new ObjectInputStream(socket.getInputStream());
     }
 
     public <T> void sendObj(Requester<T> requester, User user) {

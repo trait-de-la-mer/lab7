@@ -459,3 +459,63 @@
 2026-05-25 02:25:44.922 [main] INFO  Connecting.RequestReader - Получено: Requester{command='remove', args=1, objectClass=class java.lang.Integer, user=User{login='1', password='1'}}
 2026-05-25 02:25:50.545 [main] INFO  Connecting.RequestReader - Получено: Requester{command='remove', args=28, objectClass=class java.lang.Integer, user=User{login='1', password='1'}}
 2026-05-25 02:25:53.625 [main] INFO  Connecting.RequestReader - Получено: Requester{command='show', args=null, objectClass=null, user=User{login='1', password='1'}}
+2026-05-25 02:31:16.907 [main] ERROR Connecting.ConnectManager - Клиент отключился или ошибка null
+2026-05-25 02:31:16.908 [main] INFO  Connecting.ConnectionAcceptor - Ожидание клиента...
+2026-05-25 02:31:16.908 [main] INFO  Connecting.ConnectionAcceptor - Подключен: /127.0.0.1
+2026-05-25 02:53:31.095 [main] INFO  Connecting.ConnectionAcceptor - Сервер запущен на порту 6789
+2026-05-25 02:53:31.095 [Server-Console-Thread] INFO  tools.Consol - Серверная консоль активна. Доступные команды: save, exit
+2026-05-25 02:53:31.097 [main] INFO  Connecting.ConnectionAcceptor - Ожидание клиента...
+2026-05-25 02:53:32.253 [main] INFO  Connecting.ConnectionAcceptor - Подключен: /127.0.0.1
+2026-05-25 02:53:38.726 [main] INFO  Connecting.RequestReader - Получено: Requester{command='show', args=null, objectClass=null, user=User{login='1', password='1'}}
+2026-05-25 02:53:42.801 [main] INFO  Connecting.RequestReader - Получено: Requester{command='history', args=null, objectClass=null, user=User{login='1', password='1'}}
+2026-05-25 02:53:49.110 [main] ERROR Connecting.ConnectManager - Клиент отключился или ошибка null
+2026-05-25 02:53:49.111 [main] INFO  Connecting.ConnectionAcceptor - Ожидание клиента...
+2026-05-25 03:22:36.452 [Server-Console-Thread] INFO  tools.Consol - Серверная консоль активна. Доступные команды: save, exit
+2026-05-25 03:22:36.452 [main] INFO  Connecting.ConnectionAcceptor - Сервер запущен на порту 6789
+2026-05-25 03:22:36.454 [pool-2-thread-1] INFO  Connecting.ConnectionAcceptor - Ожидание клиента...
+2026-05-25 03:22:42.548 [pool-2-thread-1] INFO  Connecting.ConnectionAcceptor - Подключен: /127.0.0.1
+2026-05-25 03:22:42.549 [pool-2-thread-1] WARN  Connecting.ConnectManager - Сокет клиента закрыт
+2026-05-25 03:22:42.549 [pool-2-thread-1] INFO  Connecting.ConnectionAcceptor - Ожидание клиента...
+2026-05-25 03:22:42.551 [pool-3-thread-1] ERROR Connecting.ConnectManager - Клиент отключился или ошибка Socket is closed
+2026-05-25 03:25:16.276 [pool-2-thread-1] INFO  Connecting.ConnectionAcceptor - Подключен: /127.0.0.1
+2026-05-25 03:25:16.277 [pool-2-thread-1] WARN  Connecting.ConnectManager - Сокет клиента закрыт
+2026-05-25 03:25:16.277 [pool-2-thread-1] INFO  Connecting.ConnectionAcceptor - Ожидание клиента...
+2026-05-25 03:25:16.277 [pool-3-thread-2] ERROR Connecting.ConnectManager - Клиент отключился или ошибка Socket is closed
+2026-05-25 03:25:21.645 [main] INFO  Connecting.ConnectionAcceptor - Сервер запущен на порту 6789
+2026-05-25 03:25:21.645 [Server-Console-Thread] INFO  tools.Consol - Серверная консоль активна. Доступные команды: save, exit
+2026-05-25 03:25:21.647 [pool-2-thread-1] INFO  Connecting.ConnectionAcceptor - Ожидание клиента...
+2026-05-25 03:25:22.829 [pool-2-thread-1] INFO  Connecting.ConnectionAcceptor - Подключен: /127.0.0.1
+2026-05-25 03:25:22.830 [pool-2-thread-1] WARN  Connecting.ConnectManager - Сокет клиента закрыт
+2026-05-25 03:25:22.830 [pool-2-thread-1] INFO  Connecting.ConnectionAcceptor - Ожидание клиента...
+2026-05-25 03:25:22.831 [pool-3-thread-1] ERROR Connecting.ConnectManager - Клиент отключился или ошибка Socket is closed
+2026-05-25 03:25:48.717 [pool-2-thread-1] INFO  Connecting.ConnectionAcceptor - Подключен: /127.0.0.1
+2026-05-25 03:25:48.719 [pool-2-thread-1] WARN  Connecting.ConnectManager - Сокет клиента закрыт
+2026-05-25 03:25:48.719 [pool-2-thread-1] INFO  Connecting.ConnectionAcceptor - Ожидание клиента...
+2026-05-25 03:25:48.719 [pool-3-thread-2] ERROR Connecting.ConnectManager - Клиент отключился или ошибка Socket is closed
+2026-05-25 03:26:00.787 [main] INFO  Connecting.ConnectionAcceptor - Сервер запущен на порту 6789
+2026-05-25 03:26:00.787 [Server-Console-Thread] INFO  tools.Consol - Серверная консоль активна. Доступные команды: save, exit
+2026-05-25 03:26:00.790 [pool-2-thread-1] INFO  Connecting.ConnectionAcceptor - Ожидание клиента...
+2026-05-25 03:26:03.775 [pool-2-thread-1] INFO  Connecting.ConnectionAcceptor - Подключен: /127.0.0.1
+2026-05-25 03:26:03.777 [pool-2-thread-1] WARN  Connecting.ConnectManager - Сокет клиента закрыт
+2026-05-25 03:26:03.777 [pool-2-thread-1] INFO  Connecting.ConnectionAcceptor - Ожидание клиента...
+2026-05-25 03:26:03.780 [pool-3-thread-1] ERROR Connecting.ConnectManager - Клиент отключился или ошибка Socket is closed
+2026-05-25 03:36:20.988 [Server-Console-Thread] INFO  tools.Consol - Серверная консоль активна. Доступные команды: save, exit
+2026-05-25 03:36:20.988 [main] INFO  Connecting.ConnectionAcceptor - Сервер запущен на порту 6789
+2026-05-25 03:36:20.990 [pool-2-thread-1] INFO  Connecting.ConnectionAcceptor - Ожидание клиента...
+2026-05-25 03:36:23.606 [pool-2-thread-1] INFO  Connecting.ConnectionAcceptor - Подключен: /127.0.0.1
+2026-05-25 03:36:23.607 [pool-2-thread-1] INFO  Connecting.ConnectionAcceptor - Ожидание клиента...
+2026-05-25 03:36:35.477 [pool-3-thread-1] INFO  Connecting.RequestReader - Получено: Requester{command='show', args=null, objectClass=null, user=User{login='1', password='1'}}
+2026-05-25 03:36:39.684 [pool-2-thread-1] INFO  Connecting.ConnectionAcceptor - Подключен: /127.0.0.1
+2026-05-25 03:36:39.685 [pool-2-thread-1] INFO  Connecting.ConnectionAcceptor - Ожидание клиента...
+2026-05-25 03:36:44.346 [pool-3-thread-2] INFO  Connecting.RequestReader - Получено: Requester{command='show', args=null, objectClass=null, user=User{login='1', password='1'}}
+2026-05-25 03:37:12.902 [pool-3-thread-1] INFO  Connecting.RequestReader - Получено: Requester{command='add', args=LabWork{id=1, name='normal', coordinates=2;2, creationDate=2026-05-25, minimalPoint=2.0, difficulty=EASY, author: name = 2;weight = 2.0;BLACK}, objectClass=class Collection.LabWork, user=User{login='1', password='1'}}
+2026-05-25 03:37:21.847 [pool-3-thread-2] INFO  Connecting.RequestReader - Получено: Requester{command='show', args=null, objectClass=null, user=User{login='1', password='1'}}
+2026-05-25 03:37:37.015 [pool-3-thread-1] INFO  Connecting.RequestReader - Получено: Requester{command='show', args=null, objectClass=null, user=User{login='1', password='1'}}
+2026-05-25 03:37:57.620 [pool-3-thread-1] INFO  Connecting.RequestReader - Получено: Requester{command='add', args=LabWork{id=1, name='3', coordinates=3;3, creationDate=2026-05-25, minimalPoint=3.0, difficulty=EASY, author: name = 3;weight = 3.0;BLACK}, objectClass=class Collection.LabWork, user=User{login='2', password='2'}}
+2026-05-25 03:38:10.928 [pool-3-thread-1] INFO  Connecting.RequestReader - Получено: Requester{command='add', args=LabWork{id=1, name='3', coordinates=3;3, creationDate=2026-05-25, minimalPoint=3.0, difficulty=EASY, author: name = 3;weight = 3.0;RED}, objectClass=class Collection.LabWork, user=User{login='1', password='1'}}
+2026-05-25 03:38:15.372 [pool-3-thread-2] INFO  Connecting.RequestReader - Получено: Requester{command='show', args=null, objectClass=null, user=User{login='1', password='1'}}
+2026-05-25 03:38:30.627 [pool-3-thread-1] ERROR Connecting.ConnectManager - Клиент отключился: null
+2026-05-25 03:38:31.427 [pool-2-thread-1] INFO  Connecting.ConnectionAcceptor - Подключен: /127.0.0.1
+2026-05-25 03:38:31.428 [pool-2-thread-1] INFO  Connecting.ConnectionAcceptor - Ожидание клиента...
+2026-05-25 03:38:32.462 [pool-3-thread-3] ERROR Connecting.ConnectManager - Клиент отключился: null
+2026-05-25 03:38:41.046 [pool-3-thread-2] ERROR Connecting.ConnectManager - Клиент отключился: null
